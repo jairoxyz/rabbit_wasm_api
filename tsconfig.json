@@ -1,8 +1,19 @@
 {
   "compilerOptions": {
     "types": ["node"],
-    "target": "es2021",
-    "lib": ["es2021", "DOM"],
-    "allowImportingTsExtensions": true
-  }
+    "target": "ES2021",
+    "lib": ["ES2021", "DOM"],
+    "moduleResolution": "node",
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

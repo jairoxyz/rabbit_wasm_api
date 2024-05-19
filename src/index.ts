@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { main } from './rabbit.ts';
+import { main } from './rabbit';
 
 const app = express();
 app.use(express.json());
@@ -18,5 +18,5 @@ app.get('/rabbit/:id', async (req, res) => {
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Lucky rabbit is running on port ${port}`);
 });
