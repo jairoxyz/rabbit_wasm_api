@@ -15,9 +15,13 @@ Created npm script tags and dockerfile to containerize the web app.
   
 
 **Node**
+
 To build: `npm run build`
+
 To run: `npm run start`
 
 **Docker**
+
 To build: `docker build -t rabbit_wasm_api .`
+
 To run: `docker run -d -p 3000:3000 rabbit_wasm_api`
