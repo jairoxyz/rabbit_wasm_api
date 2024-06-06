@@ -23,4 +23,5 @@ To run: `npm run start`
 **Docker**
 
 To build: `docker build -t rabbit_wasm_api .`
+
 To run: `docker run -restart=always --name rabbit_wasm_api -d -p 3000:3000 rabbit_wasm_api`
