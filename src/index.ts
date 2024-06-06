@@ -8,7 +8,7 @@ app.get('/rabbit/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const result = await main(id);
-    console.log("result from index: ", result);
+    //console.log("result from index: ", result);
     res.json(result);
   } catch (error) {
     console.error(error);
