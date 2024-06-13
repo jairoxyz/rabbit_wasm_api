@@ -4,10 +4,14 @@ import { main } from './rabbit';
 const app = express();
 app.use(express.json());
 
-app.get('/rabbit/:id', async (req, res) => {
+app.get('/:provider/:id', async (req, res) => {
   try {
-    const { id } = req.params;
-    const result = await main(id);
+    const { provider, id } = req.params;
+    if (!["rabbit", "mega"].includes(provider)){
+      res.status(500).json({ 'error': 'Invalid API request' });
+      return
+    }
+    const result = await main(provider, id);
     //console.log("result from index: ", result);
     res.json(result);
   } catch (error) {
