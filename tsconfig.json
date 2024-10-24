@@ -4,8 +4,10 @@
     "target": "ES2021",
     "lib": ["ES2021", "DOM"],
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "noEmit": false,
     "allowImportingTsExtensions": false,
+    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "outDir": "dist",
     "sourceMap": true
