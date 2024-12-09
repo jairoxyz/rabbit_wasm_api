@@ -1,9 +1,10 @@
 const cryptoJs = require('crypto-js');
 //const {createCanvas, createImageData, loadImage} = require('canvas')
-const domain = 'hanatyury.online';
-const embed_url = "https://" + domain + "/v2/embed-4/";
+
 const referer = "https://flixhq.to/";
-const user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.6668.71 Safari/537.36";
+const user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6668.71 Safari/537.36";
+let domain = "pepepeyo.xyz";
+const embed_url = "https://" + domain + "/v2/embed-4/";
 
 let wasm: any;
 let arr = new Array(128).fill(void 0);
@@ -720,6 +721,7 @@ const getMeta = async (url: string) => {
     meta.content = content;
 }
 
+
 const main = async (xrax: string) => {
     await getMeta((embed_url + xrax + "?z="));
     fake_window.xrax = xrax;
@@ -760,4 +762,29 @@ const main = async (xrax: string) => {
 }
 
 
-main('rwEVZmjuF78J'); //change this value to the embed-id you want to extract from
+//get xrax and host dynamically for easier development
+const url = 'https://flixhq.to/ajax/episode/sources/4650076';
+const options = {
+  method: 'GET',
+  headers: {
+    'User-Agent': user_agent,
+    'X-Requested-With': 'XMLHttpRequest',
+    'Referer': 'https://flixhq.to/watch-movie/'
+  }
+};
+
+
+fetch(url, options)
+  .then(response => response.json())
+  .then(json => {
+    // Access the JSON result here
+    console.log(json.link);
+    const urlObj = new URL(json.link);
+    // Extract the domain
+    domain = urlObj.hostname;
+    // Extract the value between the last slash and the '?'
+    const path = urlObj.pathname;
+    const xrax = path.substring(path.lastIndexOf('/') + 1);
+    main(xrax); //change this value to the embed-id you want to extract from
+  })
+  .catch(error => console.log('Error:', error));
