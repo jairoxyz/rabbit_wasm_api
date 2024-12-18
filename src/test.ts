@@ -1,4 +1,4 @@
-import { main } from './rabbit';
+import { main } from './rabbit_old';
 
 async function run(provider: string, id: string) {
 

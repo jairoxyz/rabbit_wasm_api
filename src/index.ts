@@ -1,5 +1,5 @@
 import express from 'express';
-import { main } from './rabbit';
+import { main } from './rabbit.ts';
 
 const app = express();
 app.use(express.json());
@@ -7,7 +7,7 @@ app.use(express.json());
 app.get('/:provider/:id', async (req, res) => {
   try {
     const { provider, id } = req.params;
-    if (!["rabbit", "mega"].includes(provider)){
+    if (!provider.includes(".")){
       res.status(500).json({ 'error': 'Invalid API request' });
       return
     }

@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "types": ["node"],
-    "target": "ES2021",
+    "target": "ES2017",
     "lib": ["ES2021", "DOM"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "noEmit": false,
-    "allowImportingTsExtensions": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "outDir": "dist",
     "sourceMap": true
   },
