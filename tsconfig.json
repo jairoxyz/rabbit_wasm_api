@@ -9,6 +9,7 @@
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
+    "rootDir": "src",
     "outDir": "dist",
     "sourceMap": true
   },

@@ -1,18 +1,23 @@
 # rabbit_wasm_api
 
-rabbitstream wasm extractor by drblgn.
-
-  
+Rabbitstream and Megacloud wasm extractor by drblgn.
 
 Extracts the sources for the given embed id.
+<br>
+<br>
 
-  
+**Examples:**
+
+`http://localhost:3000/megacloud.tube/{xrax}`
+
+`http://localhost:3000/pepepeyo.xyz/{xrax}` 
+<br>
+<br>
 
 ## Installation
 
 Created npm script tags and dockerfile to containerize the web app.
-
-  
+<br>
 
 **Node**
 
