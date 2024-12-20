@@ -1,5 +1,5 @@
 
-import data from './decodedpng.js';
+import pixels from 'image-pixels';
 import util from 'util';
 import cryptoJs from 'crypto-js';
 import { webcrypto } from 'crypto'
@@ -35,11 +35,22 @@ const main = async (provider: string, xrax: string) => {
     const meta = {
         content: content
     }
+
+    const nodeList = {
+        image: {
+            src: `https://${domain}/images/image.png?v=0.1.0`,
+            height: 50,
+            width: 65,
+            complete: true,
+        },
+        context2d: {},
+        length: 1,
+    }
   
     const image_data = {
         height: 50,
         width: 65,
-        data: data.data,
+        data:  new Uint8ClampedArray((await pixels(nodeList.image.src)).data),
     }
 
     interface fakeLocalStorage {
@@ -100,18 +111,6 @@ const main = async (provider: string, xrax: string) => {
         browser_version: 1676800512
     };
 
-    const nodeList = {
-        image: {
-            src: `https://${domain}/images/image.png?v=0.1.4`,
-            height: 50,
-            width: 65,
-            complete: true,
-        },
-        context2d: {},
-        length: 1,
-    }
-
-
     function get(index: number) {
         return arr[index];
     }
@@ -121,10 +120,10 @@ const main = async (provider: string, xrax: string) => {
     let size = 0;
     let memoryBuff: Uint8Array | null;
 
-    //fix this
     function getMemBuff(): Uint8Array {
         return memoryBuff = null !== memoryBuff && 0 !== memoryBuff.byteLength ? memoryBuff : new Uint8Array(wasm.memory.buffer);
     }
+    
 
     const encoder = new TextEncoder();
     const encode = function(text: string, array: Uint8Array) {
@@ -575,7 +574,6 @@ const main = async (provider: string, xrax: string) => {
     }
 
 
-  // todo!
     async function loadWasm(url: any) {
         let mod: any, buffer: any;
         return void 0 !== wasm ? wasm : (mod = initWasm(), {
@@ -598,34 +596,6 @@ const main = async (provider: string, xrax: string) => {
 
     let wasmLoader = Object.assign(loadWasm, { 'initSync': QZ }, grootLoader);
 
-    const Z = (z: string, Q0: string) => {
-        try {
-            var Q1 = cryptoJs.AES.decrypt(z, Q0);
-            return JSON.parse(Q1.toString(cryptoJs.enc.Utf8));
-        } catch (Q2: any) {
-        }
-        return [];
-    }
-    
-    const R = (z: Uint8Array, Q0: Array<number>) => {
-        try {
-            for (let Q1 = 0; Q1 < z.length; Q1++) {
-                z[Q1] = z[Q1] ^ Q0[Q1 % Q0.length];
-            }
-        } catch (Q2) {
-            return null;
-        }
-    }
-
-    function r(z: number) {
-        return [
-        (4278190080 & z) >> 24,
-        (16711680 & z) >> 16,
-        (65280 & z) >> 8,
-        255 & z
-        ];
-    }
-
     const V = async () => {
         let Q0 = await wasmLoader(`https://${domain}/images/loading.png?v=0.0.9`);
         fake_window.bytes = Q0;
@@ -635,8 +605,7 @@ const main = async (provider: string, xrax: string) => {
             console.log("error: ", error);
         }
         fake_window.jwt_plugin(Q0);
-        //let test = new Uint8Array(fake_window.clipboard());
-        //return test;
+        return fake_window.navigate();
     }
     
     const getMeta = async (url: string) => {
@@ -732,7 +701,7 @@ const main = async (provider: string, xrax: string) => {
 
 export { main };
 
-// const provider = "hanatyury.online"; //"megacloud.tube";
-// const id = "7y8XSLmmAON8"; //"ZSqTUSeq0vgp";
-// let rabbit = await main(provider, id);
-// console.log(rabbit);
+const provider = "zizicoi.online"; //"megacloud.tube";
+const id = "pdrCPCnrYT6k"; //"ZSqTUSeq0vgp";
+let rabbit = await main(provider, id);
+console.log(JSON.stringify(rabbit));

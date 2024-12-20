@@ -1,5 +1,5 @@
 import express from 'express';
-import { main } from './rabbit.ts';
+import { main } from './rabbit.js';
 
 const app = express();
 app.use(express.json());

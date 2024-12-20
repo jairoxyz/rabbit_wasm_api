@@ -5,8 +5,8 @@
     "lib": ["ES2021", "DOM"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
     "rootDir": "src",
@@ -14,7 +14,7 @@
     "sourceMap": true
   },
   "include": [
-    "src"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"
