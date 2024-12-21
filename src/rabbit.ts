@@ -657,7 +657,11 @@ const main = async (provider: string, xrax: string) => {
         fake_window.xrax = xrax;
         fake_window.G = xrax;
         let browser_version = 1676800512
-        await V();
+        //keys
+        let Q5 = await V();
+        //console.log("Q5: " + Q5);
+        Q5 = new Uint8Array(Q5);
+        //console.log("Q5: " + Q5);
 
         let getSourcesUrl = getSourcesBase + fake_window.pid + "&v=" + fake_window.localStorage.kversion + "&h=" + fake_window.localStorage.kid + "&b=" + browser_version;
         //console.log(getSourcesUrl);
@@ -670,22 +674,17 @@ const main = async (provider: string, xrax: string) => {
         "mode": "cors"
         })).json();
         
-        
         //console.log("\nResponse from getSources:");
         //console.log(resp_json);
         //let encrypted = resp_json.sources;
         let Q3 = fake_window.localStorage.kversion;
-        let Q1 = z(Q3);
-        // get keys
-        let Q5 = fake_window.navigate();
-        //console.log("Q5: " + Q5);
-        Q5 = new Uint8Array(Q5);
-        //console.log("Q5: " + Q5);
+        let Q1 = z(Q3);        
         let Q8: any;
         Q8 = resp_json.t != 0 ? (i(Q5, Q1), Q5) : (Q8 = resp_json.k, i(Q8, Q1), Q8);
         //console.log("Q8: " + Q8);
         //console.log("Q8.length: " + Q8.length);
-        // get passphrase
+
+        // passphrase
         let str = btoa(String.fromCharCode.apply(null, new Uint8Array(Q8)));
         //console.log("key: " + str);
         var real = M(resp_json.sources, str);
@@ -701,7 +700,7 @@ const main = async (provider: string, xrax: string) => {
 
 export { main };
 
-const provider = "zizicoi.online"; //"megacloud.tube";
-const id = "pdrCPCnrYT6k"; //"ZSqTUSeq0vgp";
-let rabbit = await main(provider, id);
-console.log(JSON.stringify(rabbit));
+// const provider = "zizicoi.online"; //"megacloud.tube";
+// const id = "1NB2Fgj7JvEc"; //"ZSqTUSeq0vgp";
+// let rabbit = await main(provider, id);
+// console.log(JSON.stringify(rabbit));
